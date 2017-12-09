@@ -26,42 +26,48 @@ public class NodeConnector : MonoBehaviour {
     public void OnMouseDown()
     {
         Debug.Log("Mouse down");
-        // Only allow this if the pixie is attached to the parentNode.
-        if (thePixie_.collapsedNode_ == parentNode_)
+        // Only allow this if the pixie is attached to the parentNode, and if we're observing
+        if (UI.isObserving_)
         {
-            mouseRenderer_.positionCount = 2;
-            isMouseDown_ = true;
+            if (thePixie_.collapsedNode_ == parentNode_)
+            {
+                mouseRenderer_.positionCount = 2;
+                isMouseDown_ = true;
+            };
         };
     }
     public void OnMouseUp()
     {
         Debug.Log("Mouse up");
-        if (thePixie_.collapsedNode_ == parentNode_)
+        if (UI.isObserving_)
         {
-            isMouseDown_ = false;
-            // Check if there are any nodes nearby
-            RaycastHit2D hit;
-            //Ray ray = Camera.main.ScreenPointToRay(mouseRenderer_.GetPosition(1));
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(mouseRenderer_.GetPosition(1), 1f);
-            if (colliders.Length > 0)
+            if (thePixie_.collapsedNode_ == parentNode_)
             {
-                Debug.Log("hit!");
-                foreach (Collider2D coll in colliders)
+                isMouseDown_ = false;
+                // Check if there are any nodes nearby
+                RaycastHit2D hit;
+                //Ray ray = Camera.main.ScreenPointToRay(mouseRenderer_.GetPosition(1));
+                Collider2D[] colliders = Physics2D.OverlapCircleAll(mouseRenderer_.GetPosition(1), 1f);
+                if (colliders.Length > 0)
                 {
-                    Debug.Log("Hit: " + coll.transform.name);
-                    // We only want to hit the actual graphic, not the linerenderers; the graphic has the nodeconnector script, so we can look for that
-                    NodeConnector collidedNode = coll.transform.GetComponent<NodeConnector>();
-                    if (collidedNode != null)
+                    Debug.Log("hit!");
+                    foreach (Collider2D coll in colliders)
                     {
-                        parentNode_.ConnectNode(collidedNode.parentNode_);
-                    };
+                        Debug.Log("Hit: " + coll.transform.name);
+                        // We only want to hit the actual graphic, not the linerenderers; the graphic has the nodeconnector script, so we can look for that
+                        NodeConnector collidedNode = coll.transform.GetComponent<NodeConnector>();
+                        if (collidedNode != null)
+                        {
+                            parentNode_.ConnectNode(collidedNode.parentNode_);
+                        };
+                    }
                 }
-            }
-            else {
-                Debug.Log("no hit!");
-            }
-            // Remove line
-            mouseRenderer_.positionCount = 0;
+                else {
+                    Debug.Log("no hit!");
+                }
+                // Remove line
+                mouseRenderer_.positionCount = 0;
+            };
         };
             
                 
