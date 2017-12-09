@@ -8,6 +8,7 @@ public class NodeProbability
     // Class containing a node, and the probability that the pixie is there
     public Node node_;
     public float probability_;
+
 }
 
 public class Pixie : MonoBehaviour {
@@ -21,30 +22,64 @@ public class Pixie : MonoBehaviour {
     public List<NodeProbability> nodeProbabilities_ = new List<NodeProbability> { };
     // How many levels deep will it find connected nodes?
     private int recursions_ = 3;
-	// Use this for initialization
-	void Start () {
+    // Set to false when you want the randomness to stop
+    protected bool notObserving_ = true;
+
+    // Init
+    void Start () {
         connectedNodes_ = collapsedNode_.ReturnAllSubNodes(recursions_);
         PopulateNodeList(true);
+        // Set the returned node to be 100 probability
+        NodeProbability np = ReturnNP(collapsedNode_);
+        np.probability_ = 1f;
         StartCoroutine(QuantumMovement());
+        StartCoroutine(VisualizeProbabilityChange());
     }
 	
     public void Collapse()
     {
         // Collapses pixie location
         // Get index for random weighted nodeprobabiity
+        notObserving_ = false;
         List<int> weights = new List<int> { };
         foreach (NodeProbability np in nodeProbabilities_)
         {
-            weights.Add((int)np.probability_);
+            int weight = (int)(np.probability_ * 100f);
+            weights.Add(weight);
+            Debug.Log(weight);
         };
         int index = GetRandomWeightedIndex(weights.ToArray());
-
+        Debug.Log("Index: " + index.ToString());
         Node newNode = nodeProbabilities_[index].node_;
         // Assign node
         collapsedNode_ = newNode;
         connectedNodes_ = collapsedNode_.ReturnAllSubNodes(recursions_);
         PopulateNodeList(true);
+        // Set the returned node to be 100 probability
+        NodeProbability newNP = ReturnNP(collapsedNode_);
+        newNP.probability_ = 1f;
+        
 
+    }
+    public void StopObserving()
+    {
+        // Restart quantum movement
+        notObserving_ = true;
+        StartCoroutine(QuantumMovement());
+    }
+
+    public IEnumerator VisualizeProbabilityChange()
+    {
+        // Constantly visualizes the changes in probability
+        while (true)
+        {
+            for (int i = 0; i < nodeProbabilities_.Count; i++)
+            {
+                NodeProbability np = nodeProbabilities_[i];
+                LeanTween.scale(np.node_.gameObject, new Vector3(np.probability_, np.probability_, np.probability_), .1f);
+            }
+            yield return new WaitForSeconds(0.15f);
+        }
     }
 
     public void PopulateNodeList(bool cleanPopulate = false)
@@ -78,6 +113,21 @@ public class Pixie : MonoBehaviour {
         }
         return false;
     }
+    public NodeProbability ReturnNP(Node node)
+    {
+        // Returns the node probability containing the node in question, or null if not found
+
+        foreach (NodeProbability np in nodeProbabilities_)
+        {
+            if (np.node_ == node)
+            {
+                return np;
+            }
+        }
+        return null;
+    }
+
+
     public void ClearNulls()
     {
         List<NodeProbability> removeList = new List<NodeProbability> { };
@@ -95,7 +145,7 @@ public class Pixie : MonoBehaviour {
     public IEnumerator QuantumMovement()
     {
         float probability = 1f;
-        while (enabled)
+        while (notObserving_)
         {
             // Update list
             PopulateNodeList();
@@ -105,23 +155,27 @@ public class Pixie : MonoBehaviour {
             bool up = (Random.Range(0, 1f) < .5f);
             if (up)
             {
-                if (probability > 0.01f)
+                float randomProb = Random.Range(0f, probability);
+                if ((probability - randomProb) >= 0f)
                 {
-                    float randomProb = Random.Range(0f, probability);
-                    randomNode.probability_ += randomProb;
-                    probability -= randomProb;
+                    float newNodeProbability = Mathf.Clamp(randomNode.probability_ + randomProb, 0f, 1f);
+                    float newTotalProbability = Mathf.Clamp(probability - randomProb, 0f, 1f);
+                    randomNode.probability_ = newNodeProbability;
+                    probability = newTotalProbability;
                 }
             }
             else
             {
-                if (randomNode.probability_ > 0)
+                float randomProb = Random.Range(0f, randomNode.probability_);
+                if ((probability+randomProb)<= 1f)
                 {
-                    float randomProb = Random.Range(0f, randomNode.probability_);
-                    randomNode.probability_ -= randomProb;
-                    probability += randomProb;
+                    float newNodeProbability = Mathf.Clamp(randomNode.probability_ - randomProb, 0f, 1f);
+                    float newTotalProbability = Mathf.Clamp(probability + randomProb, 0f, 1f);
+                    randomNode.probability_ = newNodeProbability;
+                    probability = newTotalProbability;
                 }
             }
-            randomNode.node_.transform.localScale = new Vector3(randomNode.probability_, randomNode.probability_, randomNode.probability_);
+            
             yield return new WaitForSeconds(.1f);
 
         }
@@ -130,34 +184,29 @@ public class Pixie : MonoBehaviour {
     public int GetRandomWeightedIndex(int[] weights)
     {
         if (weights == null || weights.Length == 0) return -1;
-
-        int t;
-        int i;
-        int w = 0;
-        for (i = 0; i < weights.Length; i++)
+        int weightTotal = 0;
+        foreach (int w in weights)
         {
-            if (weights[i] >= 0) w += weights[i];
+            weightTotal += w;
         }
-
-        float r = Random.value;
-        float s = 0f;
-
-        for (i = 0; i < weights.Length; i++)
+        int result = 0, total = 0;
+        int randVal = Random.Range(0, weightTotal + 1);
+        for (result = 0; result < weights.Length; result++)
         {
-            if (weights[i] <= 0f) continue;
-
-            s += (float)weights[i] / weights.Length;
-            if (s >= r) return i;
+            total += weights[result];
+            if (total >= randVal) break;
         }
-
-        return -1;
+        return result;
     }
 
     // Update is called once per frame
     void Update () {
 
+        // Update connected nodes, and clear any that are null (i.e. connections severed)
         connectedNodes_ = collapsedNode_.ReturnAllSubNodes(recursions_);
         ClearNulls();
+        // Move pixie to current collapsednode
+        transform.position = collapsedNode_.transform.position;
         
 
     }
