@@ -560,7 +560,7 @@ SpriteRenderer:
   m_Size: {x: 16.74, y: 17.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!222 &222207833488279176
 CanvasRenderer:
