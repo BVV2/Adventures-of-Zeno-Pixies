@@ -25,8 +25,12 @@ public class Pixie : MonoBehaviour {
     // Set to false when you want the randomness to stop
     protected bool notObserving_ = true;
 
+    // used to reset when obseving.
+    protected Node[] allNodes_;
+
     // Init
     void Start () {
+        allNodes_ = FindObjectsOfType<Node>();
         connectedNodes_ = collapsedNode_.ReturnAllSubNodes(recursions_);
         PopulateNodeList(true);
         // Set the returned node to be 100 probability
@@ -53,8 +57,7 @@ public class Pixie : MonoBehaviour {
         Node newNode = nodeProbabilities_[index].node_;
         // Assign node
         collapsedNode_ = newNode;
-        connectedNodes_ = collapsedNode_.ReturnAllSubNodes(recursions_);
-        PopulateNodeList(true);
+       
         // Set the returned node to be 100 probability
         NodeProbability newNP = ReturnNP(collapsedNode_);
         newNP.probability_ = 1f;
@@ -63,15 +66,20 @@ public class Pixie : MonoBehaviour {
     }
     public void StopObserving()
     {
+        // Reset the node thingies
+        connectedNodes_ = collapsedNode_.ReturnAllSubNodes(recursions_);
+        PopulateNodeList(true);
+        ClearNulls();
         // Restart quantum movement
         notObserving_ = true;
+        StartCoroutine(VisualizeProbabilityChange());
         StartCoroutine(QuantumMovement());
     }
 
     public IEnumerator VisualizeProbabilityChange()
     {
         // Constantly visualizes the changes in probability
-        while (true)
+        while (notObserving_)
         {
             for (int i = 0; i < nodeProbabilities_.Count; i++)
             {
@@ -80,6 +88,11 @@ public class Pixie : MonoBehaviour {
             }
             yield return new WaitForSeconds(0.15f);
         }
+        foreach (Node node in allNodes_)
+        {
+            LeanTween.scale(node.nodeGraphic_, new Vector3(1f, 1f, 1f), .1f);
+        }
+
     }
 
     public void PopulateNodeList(bool cleanPopulate = false)
@@ -151,31 +164,34 @@ public class Pixie : MonoBehaviour {
             PopulateNodeList();
             // Pick a connected node
             NodeProbability randomNode = nodeProbabilities_[Random.Range(0, nodeProbabilities_.Count)];
-            // Increase or decrease its probability
-            bool up = (Random.Range(0, 1f) < .5f);
-            if (up)
+            // Is it still connected? If not, it's static, and we won't change its probability
+            if (connectedNodes_.Contains(randomNode.node_))
             {
-                float randomProb = Random.Range(0f, probability);
-                if ((probability - randomProb) >= 0f)
+                // Increase or decrease its probability
+                bool up = (Random.Range(0, 1f) < .5f);
+                if (up)
                 {
-                    float newNodeProbability = Mathf.Clamp(randomNode.probability_ + randomProb, 0f, 1f);
-                    float newTotalProbability = Mathf.Clamp(probability - randomProb, 0f, 1f);
-                    randomNode.probability_ = newNodeProbability;
-                    probability = newTotalProbability;
+                    float randomProb = Random.Range(0f, probability);
+                    if ((probability - randomProb) >= 0f)
+                    {
+                        float newNodeProbability = Mathf.Clamp(randomNode.probability_ + randomProb, 0f, 1f);
+                        float newTotalProbability = Mathf.Clamp(probability - randomProb, 0f, 1f);
+                        randomNode.probability_ = newNodeProbability;
+                        probability = newTotalProbability;
+                    }
                 }
-            }
-            else
-            {
-                float randomProb = Random.Range(0f, randomNode.probability_);
-                if ((probability+randomProb)<= 1f)
+                else
                 {
-                    float newNodeProbability = Mathf.Clamp(randomNode.probability_ - randomProb, 0f, 1f);
-                    float newTotalProbability = Mathf.Clamp(probability + randomProb, 0f, 1f);
-                    randomNode.probability_ = newNodeProbability;
-                    probability = newTotalProbability;
+                    float randomProb = Random.Range(0f, randomNode.probability_);
+                    if ((probability + randomProb) <= 1f)
+                    {
+                        float newNodeProbability = Mathf.Clamp(randomNode.probability_ - randomProb, 0f, 1f);
+                        float newTotalProbability = Mathf.Clamp(probability + randomProb, 0f, 1f);
+                        randomNode.probability_ = newNodeProbability;
+                        probability = newTotalProbability;
+                    }
                 }
-            }
-            
+            };
             yield return new WaitForSeconds(.1f);
 
         }
@@ -204,7 +220,7 @@ public class Pixie : MonoBehaviour {
 
         // Update connected nodes, and clear any that are null (i.e. connections severed)
         connectedNodes_ = collapsedNode_.ReturnAllSubNodes(recursions_);
-        ClearNulls();
+        //ClearNulls();
         // Move pixie to current collapsednode
         transform.position = collapsedNode_.transform.position;
         
