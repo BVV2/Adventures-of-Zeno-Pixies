@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class NodeTrigger : MonoBehaviour {
 
@@ -14,11 +15,7 @@ public class NodeTrigger : MonoBehaviour {
     public UI ui_;
 
     [Header("Add possible trigger effects here, e.g. win, death, etc")]
-    public bool WinTrigger_;
-    public bool ManaDrain_;
-    public bool ManaGain_;
-    public bool HealthDrain_;
-    public bool HealthGain_;
+    public NodeTypes type_ = NodeTypes.NORMAL;
 
     private bool pixieIsInNode_ = false;
 
@@ -26,7 +23,23 @@ public class NodeTrigger : MonoBehaviour {
     {
         thePixie_ = FindObjectOfType<Pixie>();
         ui_ = FindObjectOfType<UI>();
+        ChangeGraphic();
 
+    }
+
+    void ChangeGraphic()
+    {
+        // Changes icon to match the trigger type, if any
+        SpriteRenderer actualGraphic = ownNode_.nodeGraphic_.GetComponentInChildren<SpriteRenderer>();
+        Debug.Log("Actual graphic: " + actualGraphic);
+        Sprite typeSprite = ui_.GetNodeTypeSprite(type_);
+        Debug.Log("TypeSprite: " + typeSprite);
+        actualGraphic.sprite = typeSprite;
+        // Change color if it's an objective star.
+        if (type_ == NodeTypes.OBJECTIVE)
+        {
+            actualGraphic.color = Color.yellow;
+        }
     }
 
 
@@ -49,26 +62,49 @@ public class NodeTrigger : MonoBehaviour {
     IEnumerator TriggerEffect()
     {
         Debug.Log("Trigger!!");
-        if (WinTrigger_)
+        switch (type_)
         {
-            ui_.ShowWin();
+            case NodeTypes.WIN:
+                {
+                    if (UI.objectives_ == 0)
+                    {
+                        ui_.ShowWin();
+                    };
+                    break;
+                };
+            case NodeTypes.OBJECTIVE:
+                {
+                    UI.CompleteObjective(1);
+                    type_ = NodeTypes.NORMAL;
+                    ChangeGraphic();
+                    break;
+                };
+            case NodeTypes.HEALTH_DOWN:
+                {
+                    UI.ReduceHealth(15f);
+                    break;
+                };
+            case NodeTypes.HEALTH_UP:
+                {
+                    UI.AddHealth(15f);
+                    break;
+                };
+            case NodeTypes.MANA_DOWN:
+                {
+                    UI.ReduceMana(15f);
+                    break;
+                };
+            case NodeTypes.MANA_UP:
+                {
+                    UI.AddMana(15f);
+                    break;
+                };
+            case NodeTypes.NORMAL:
+                {
+                    break;
+                };
         }
-        else if (ManaDrain_)
-        {
-            UI.ReduceMana(15f);
-        }
-        else if (ManaGain_)
-        {
-            UI.AddMana(15f);
-        }
-        else if (HealthDrain_)
-        {
-            UI.ReduceHealth(15f);
-        }
-        else if (HealthGain_)
-        {
-            UI.AddHealth(15f);
-        };
-        yield return new WaitForEndOfFrame();
+
+                yield return new WaitForEndOfFrame();
     }
 }

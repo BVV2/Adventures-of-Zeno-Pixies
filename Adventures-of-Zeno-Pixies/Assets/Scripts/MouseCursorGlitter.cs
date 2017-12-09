@@ -8,15 +8,14 @@ public class MouseCursorGlitter : MonoBehaviour {
     public static Color defaultColor_;
     public static float glitterSpeed_;
     public static float defaultSpeed_;
-    private ParticleSystem particleSystem_;
+    public ParticleSystem ps_glitter_;
+    public ParticleSystem ps_glow_;
 
 	// Use this for initialization
 	void Start () {
-
-        particleSystem_ = GetComponent<ParticleSystem>();
-        glitterColor_ = particleSystem_.startColor;
+        glitterColor_ = ps_glitter_.startColor;
         defaultColor_ = glitterColor_;
-        glitterSpeed_ = particleSystem_.startSpeed;
+        glitterSpeed_ = ps_glitter_.startSpeed;
         defaultSpeed_ = glitterSpeed_;
 	}
 	
@@ -24,11 +23,12 @@ public class MouseCursorGlitter : MonoBehaviour {
 	void Update () {
 
         transform.position = (Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        particleSystem_.startColor = glitterColor_;
-        particleSystem_.startSpeed = glitterSpeed_;
-        particleSystem_.emissionRate = glitterSpeed_;
-        Mathf.Clamp(particleSystem_.startSpeed, 0f, 10f);
-        Mathf.Clamp(particleSystem_.emissionRate, 0f, 10f);
+        ps_glitter_.startColor = glitterColor_;
+        ps_glow_.startColor = glitterColor_;
+        ps_glitter_.startSpeed = glitterSpeed_;
+        ps_glitter_.emissionRate = glitterSpeed_;
+        Mathf.Clamp(ps_glitter_.startSpeed, 0f, 10f);
+        Mathf.Clamp(ps_glitter_.emissionRate, 0f, 10f);
 
     }
 }

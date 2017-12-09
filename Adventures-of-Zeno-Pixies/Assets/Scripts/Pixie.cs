@@ -24,6 +24,7 @@ public class Pixie : MonoBehaviour {
     private int recursions_ = 3;
     // Set to false when you want the randomness to stop
     protected bool notObserving_ = true;
+    private Animator animator_;
 
     // used to reset when obseving.
     protected Node[] allNodes_;
@@ -38,6 +39,7 @@ public class Pixie : MonoBehaviour {
         np.probability_ = 1f;
         StartCoroutine(QuantumMovement());
         StartCoroutine(VisualizeProbabilityChange());
+        animator_ = GetComponent<Animator>();
     }
 	
     public void Collapse()
@@ -61,7 +63,9 @@ public class Pixie : MonoBehaviour {
         // Set the returned node to be 100 probability
         NodeProbability newNP = ReturnNP(collapsedNode_);
         newNP.probability_ = 1f;
-        
+        // Set animation!
+        animator_.SetTrigger("flight_collapsed");
+
 
     }
     public void StopObserving()
@@ -77,6 +81,8 @@ public class Pixie : MonoBehaviour {
         curNP.probability_ = 1f;
         StartCoroutine(VisualizeProbabilityChange());
         StartCoroutine(QuantumMovement());
+        // And make him fly all over the place!
+        animator_.SetTrigger("flight_unknown");
     }
 
     public IEnumerator VisualizeProbabilityChange()

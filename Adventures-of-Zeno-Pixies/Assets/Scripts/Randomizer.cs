@@ -102,7 +102,7 @@ public class Randomizer : MonoBehaviour {
         GameObject StartNode = GameObject.Find("Node " + SE[0].ToString());
         GameObject EndNode = GameObject.Find("Node " + SE[1].ToString());
         NPixie.gameObject.GetComponent<Pixie>().collapsedNode_ = StartNode.gameObject.GetComponent<Node>();
-        EndNode.gameObject.GetComponent<NodeTrigger>().WinTrigger_ = true;
+        EndNode.gameObject.GetComponent<NodeTrigger>().type_ = NodeTypes.WIN;
     }
 
 }
