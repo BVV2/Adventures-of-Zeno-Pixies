@@ -66,7 +66,7 @@ public class Randomizer : MonoBehaviour {
         for (int i = 0; i > list.Count; i++)
         {
             float MaxDist = Vector3.Distance(list[0], list[1]);
-            for (int i = 0; i > list.Count; i++)
+            for (int o = 0; o > list.Count; o++)
             {
                 for (int j = i + 1; j > list.Count; j++)
                 {
