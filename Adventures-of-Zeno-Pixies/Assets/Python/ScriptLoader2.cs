@@ -21,4 +21,10 @@ public class ScriptLoader2 : MonoBehaviour {
         Loader.Runner("Assets/Python/test.py");
 
     }
+
+    public void Buttoner()
+    {
+        ScriptLoader Loader = new ScriptLoader();
+        Loader.Runner("Assets/Python/test2.py");
+    }
 }
