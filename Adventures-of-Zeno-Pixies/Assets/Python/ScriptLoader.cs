@@ -9,14 +9,14 @@ using IronPython;
 public class ScriptLoader {
 
 	[MenuItem("Python/LoadFromFile")]
-    public static void ReadFile()
+    public static void ReadFile(string file)
     {
         var ScriptEngine = IronPython.Hosting.Python.CreateEngine();
         var ScriptScope = ScriptEngine.CreateScope();
         ScriptEngine.Runtime.LoadAssembly(typeof(GameObject).Assembly);
         ScriptEngine.Runtime.LoadAssembly(typeof(Editor).Assembly);
         StringBuilder example = new StringBuilder();
-        FileInfo pySourceFile = new FileInfo("Assets/Python/test.py");
+        FileInfo pySourceFile = new FileInfo(file);
         StreamReader reader = pySourceFile.OpenText();
         while(!reader.EndOfStream)
         {
@@ -28,8 +28,8 @@ public class ScriptLoader {
         var ScriptSource = ScriptEngine.CreateScriptSourceFromString(example.ToString());
         ScriptSource.Execute(ScriptScope);
     }
-    public void Runner()
+    public void Runner(string file)
     {
-        ReadFile();
+        ReadFile(file);
     }
 }
