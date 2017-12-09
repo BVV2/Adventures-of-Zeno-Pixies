@@ -23,6 +23,20 @@ public class NodeConnector : MonoBehaviour {
         };
 	}
 
+    void OnMouseEnter()
+    {
+        if (thePixie_.collapsedNode_ == parentNode_ && UI.isObserving_)
+        {
+            MouseCursorGlitter.glitterColor_ = Color.blue;
+            MouseCursorGlitter.glitterSpeed_ = MouseCursorGlitter.glitterSpeed_ * 2;
+        };
+    }
+    void OnMouseExit()
+    {
+        MouseCursorGlitter.glitterColor_ = MouseCursorGlitter.defaultColor_;
+        MouseCursorGlitter.glitterSpeed_ = MouseCursorGlitter.defaultSpeed_;
+    }
+
     public void OnMouseDown()
     {
         Debug.Log("Mouse down");

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,11 +14,14 @@ public class UI : MonoBehaviour {
     public static float manaReserve_ = 100f;
     // Pixie health. Reaches 0 = dead pixie, game over
     public static float pixieHealth_ = 100f;
+    // Time, reaches 0 = game over
+    public static float timer_ = 180f;
 
     [Header("UI objects")]
     public GameObject winPanel_;
     public Button startObserve_;
     public Button stopObserve_;
+    public Text timerText_;
 
     public Image concentrationImage_;
     public Image manaReserveImage_;
@@ -41,7 +45,7 @@ public class UI : MonoBehaviour {
         {
             Debug.LogWarning("No pixie found! aaah!");
         };
-
+        StartCoroutine(TimerCountDown());
         
 
 	}
@@ -126,6 +130,22 @@ public class UI : MonoBehaviour {
         {
             manaReserve_ = 0f;
         };
+    }
+
+    public IEnumerator TimerCountDown()
+    {
+        while (timer_>0f)
+        {
+            TimeSpan t = TimeSpan.FromSeconds(timer_);
+
+            string answer = string.Format("{0:D2}m:{1:D2}s",
+                            t.Minutes,
+                            t.Seconds);
+            timerText_.text = answer;
+            yield return new WaitForSeconds(0.1f);
+            timer_ -= 0.1f;
+        };
+        Quit();
     }
 
 }

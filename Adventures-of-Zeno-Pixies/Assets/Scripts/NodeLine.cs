@@ -20,6 +20,20 @@ public class NodeLine : MonoBehaviour
         };
     }
 
+    void OnMouseEnter()
+    {
+        if (thePixie_.connectedNodes_.Contains(nodeStart_) || thePixie_.connectedNodes_.Contains(nodeEnd_))
+        {
+            MouseCursorGlitter.glitterColor_ = Color.red;
+            MouseCursorGlitter.glitterSpeed_ = MouseCursorGlitter.glitterSpeed_ * 2;
+        };
+    }
+    void OnMouseExit()
+    {
+        MouseCursorGlitter.glitterColor_ = MouseCursorGlitter.defaultColor_;
+        MouseCursorGlitter.glitterSpeed_ = MouseCursorGlitter.defaultSpeed_;
+    }
+
     public void OnMouseDown()
     {
         Debug.Log("Clicked node: " + transform.root.name);
