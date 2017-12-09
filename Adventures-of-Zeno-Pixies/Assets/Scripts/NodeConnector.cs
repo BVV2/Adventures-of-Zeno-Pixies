@@ -56,7 +56,7 @@ public class NodeConnector : MonoBehaviour {
                         Debug.Log("Hit: " + coll.transform.name);
                         // We only want to hit the actual graphic, not the linerenderers; the graphic has the nodeconnector script, so we can look for that
                         NodeConnector collidedNode = coll.transform.GetComponent<NodeConnector>();
-                        if (collidedNode != null)
+                        if (collidedNode != null && collidedNode != this)
                         {
                             parentNode_.ConnectNode(collidedNode.parentNode_);
                         };

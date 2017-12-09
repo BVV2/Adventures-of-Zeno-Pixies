@@ -8,11 +8,11 @@ public class UI : MonoBehaviour {
     // Yes I know, could use another class, but this is just faster for me to code
     [Header("Starting Stats")]
     // Seconds you can keep observing non-stop.
-    public float concentration_ = 10f;
+    public static float concentration_ = 10f;
     // Drink from here whenever you press observe
-    public float manaReserve_ = 100f;
+    public static float manaReserve_ = 100f;
     // Pixie health. Reaches 0 = dead pixie, game over
-    public float pixieHealth_ = 100f;
+    public static float pixieHealth_ = 100f;
 
     [Header("UI objects")]
     public GameObject winPanel_;
@@ -114,6 +114,18 @@ public class UI : MonoBehaviour {
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public static void ReduceMana(float amount)
+    {
+        if (manaReserve_ > amount)
+        {
+            manaReserve_ -= amount;
+        }
+        else
+        {
+            manaReserve_ = 0f;
+        };
     }
 
 }

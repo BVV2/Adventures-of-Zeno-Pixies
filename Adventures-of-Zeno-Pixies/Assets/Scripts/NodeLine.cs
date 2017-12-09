@@ -23,13 +23,21 @@ public class NodeLine : MonoBehaviour
     public void OnMouseDown()
     {
         Debug.Log("Clicked node: " + transform.root.name);
-        // only allow deletion if the pixie is at the end or start of the line, and if we're observing
+        float manaCost = 10f;
+       
+
         if (UI.isObserving_)
         {
-            if (thePixie_.collapsedNode_ == nodeStart_ || thePixie_.collapsedNode_ == nodeEnd_)
+            manaCost = 0f;
+        };
+        if (UI.manaReserve_ > manaCost)
+        {
+            // only allow deletion if the nodes are a part of the pixie's network!
+            if (thePixie_.connectedNodes_.Contains(nodeStart_) || thePixie_.connectedNodes_.Contains(nodeEnd_))
             {
                 nodeStart_.DisconnectNode(nodeEnd_);
                 nodeEnd_.DisconnectNode(nodeStart_);
+                UI.ReduceMana(manaCost);
             };
         };
     }
