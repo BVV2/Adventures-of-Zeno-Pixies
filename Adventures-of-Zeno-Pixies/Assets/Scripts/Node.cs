@@ -12,6 +12,7 @@ public class Node : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+        ClearNulls();
         foreach (Node node in connectedNodes_)
         {
             node.ConnectNode(this);
@@ -35,6 +36,10 @@ public class Node : MonoBehaviour {
         returnList = returnList.Distinct().ToList<Node>();
 
         return returnList;
+    }
+    public void ClearNulls()
+    {
+        connectedNodes_.RemoveAll(item => item == null);
     }
 	
 	// Update is called once per frame

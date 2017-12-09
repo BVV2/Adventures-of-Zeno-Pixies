@@ -15,6 +15,10 @@ public class NodeTrigger : MonoBehaviour {
 
     [Header("Add possible trigger effects here, e.g. win, death, etc")]
     public bool WinTrigger_;
+    public bool ManaDrain_;
+    public bool ManaGain_;
+    public bool HealthDrain_;
+    public bool HealthGain_;
 
     private bool pixieIsInNode_ = false;
 
@@ -44,12 +48,27 @@ public class NodeTrigger : MonoBehaviour {
 
     IEnumerator TriggerEffect()
     {
-        Debug.Log("Entered!");
+        Debug.Log("Trigger!!");
         if (WinTrigger_)
         {
             ui_.ShowWin();
-            yield return new WaitForSeconds(2f);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+        else if (ManaDrain_)
+        {
+            UI.ReduceMana(15f);
+        }
+        else if (ManaGain_)
+        {
+            UI.AddMana(15f);
+        }
+        else if (HealthDrain_)
+        {
+            UI.ReduceHealth(15f);
+        }
+        else if (HealthGain_)
+        {
+            UI.AddHealth(15f);
+        };
+        yield return new WaitForEndOfFrame();
     }
 }

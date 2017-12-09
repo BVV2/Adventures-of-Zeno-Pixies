@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour {
 
@@ -19,18 +20,23 @@ public class UI : MonoBehaviour {
 
     [Header("UI objects")]
     public GameObject winPanel_;
+    public GameObject losePanel_;
     public Button startObserve_;
     public Button stopObserve_;
     public Text timerText_;
 
     public Image concentrationImage_;
     public Image manaReserveImage_;
+    public Image healthReserveImage_;
 
     // Change this to be a nice number.
-    private float concentrationMax_ = 10f;
-    private float manaReserveMax_ = 100f;
+    static float concentrationMax_ = 10f;
+    static float manaReserveMax_ = 100f;
+    static float pixieHealthMax_ = 100f;
 
     private Pixie thePixie_;
+    private float oldHealth_;
+    private float oldMana_;
 
     public static bool isObserving_;
 
@@ -46,6 +52,8 @@ public class UI : MonoBehaviour {
             Debug.LogWarning("No pixie found! aaah!");
         };
         StartCoroutine(TimerCountDown());
+        oldMana_ = manaReserve_;
+        oldHealth_ = pixieHealth_;
         
 
 	}
@@ -53,6 +61,7 @@ public class UI : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+        
         // Mana drain while observing!
         if (isObserving_)
         {
@@ -65,18 +74,26 @@ public class UI : MonoBehaviour {
                 StopObserving();
             };
         }
-        else
-        {// slowly recharge manapool when not observing
-            if (manaReserve_ < manaReserveMax_)
-            {
-                manaReserve_ += 0.005f;
-            };
-        }
         concentrationImage_.fillAmount = concentration_ / concentrationMax_;
         manaReserveImage_.fillAmount = manaReserve_ / manaReserveMax_;
+        healthReserveImage_.fillAmount = pixieHealth_ / pixieHealthMax_;
+        if (pixieHealth_ == 0f)
+        {
+            ShowFail();
+        }
 
-        
-
+        if (oldHealth_ != pixieHealth_)
+        {
+            GameObject parentObj = healthReserveImage_.transform.parent.gameObject;
+            LeanTween.scale(parentObj, parentObj.transform.localScale + new Vector3(0.1f, 0.1f, 0.1f), 1.5f).setEase(LeanTweenType.punch);
+            oldHealth_ = pixieHealth_;
+        };
+        if (oldMana_ != manaReserve_)
+        {
+            GameObject parentObj = manaReserveImage_.transform.parent.gameObject;
+            LeanTween.scale(parentObj, parentObj.transform.localScale + new Vector3(0.1f, 0.1f, 0.1f), 1.5f).setEase(LeanTweenType.punch);
+            oldMana_ = manaReserve_;
+        };
 
     }
 
@@ -112,12 +129,26 @@ public class UI : MonoBehaviour {
 
     public void ShowWin()
     {
+        Time.timeScale = 0.1f;
         winPanel_.SetActive(true);
+    }
+
+    public void ShowFail()
+    {
+        Time.timeScale = 0.1f;
+        losePanel_.SetActive(true);
     }
 
     public void Quit()
     {
         Application.Quit();
+    }
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public float GetMaxMana() {
+        return manaReserveMax_;
     }
 
     public static void ReduceMana(float amount)
@@ -129,6 +160,39 @@ public class UI : MonoBehaviour {
         else
         {
             manaReserve_ = 0f;
+        };
+    }
+    public static void AddMana(float amount)
+    {
+        if ((amount + manaReserve_) < manaReserveMax_)
+        {
+            manaReserve_ += amount;
+        }
+        else
+        {
+            manaReserve_ = manaReserveMax_;
+        };
+    }
+    public static void ReduceHealth(float amount)
+    {
+        if (pixieHealth_ > amount)
+        {
+            pixieHealth_ -= amount;
+        }
+        else
+        {
+            pixieHealth_ = 0f;
+        };
+    }
+    public static void AddHealth(float amount)
+    {
+        if ((amount + pixieHealth_) < pixieHealthMax_)
+        {
+            pixieHealth_ += amount;
+        }
+        else
+        {
+            pixieHealth_ = pixieHealthMax_;
         };
     }
 
@@ -145,7 +209,7 @@ public class UI : MonoBehaviour {
             yield return new WaitForSeconds(0.1f);
             timer_ -= 0.1f;
         };
-        Quit();
+        ShowFail();
     }
 
 }
