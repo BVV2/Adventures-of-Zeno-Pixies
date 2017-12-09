@@ -9,6 +9,7 @@ public class NodeConnector : MonoBehaviour {
     public Node parentNode_;
     public LineRenderer mouseRenderer_;
     protected bool isMouseDown_ = false;
+    [HideInInspector]
     protected Pixie thePixie_;
 
     private float maxLineLength_ = 10f;

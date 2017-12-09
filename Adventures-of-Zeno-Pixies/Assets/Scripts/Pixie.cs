@@ -72,6 +72,9 @@ public class Pixie : MonoBehaviour {
         ClearNulls();
         // Restart quantum movement
         notObserving_ = true;
+        // Make the current collapsedNode have a probability of 1.
+        NodeProbability curNP = ReturnNP(collapsedNode_);
+        curNP.probability_ = 1f;
         StartCoroutine(VisualizeProbabilityChange());
         StartCoroutine(QuantumMovement());
     }
@@ -84,9 +87,9 @@ public class Pixie : MonoBehaviour {
             for (int i = 0; i < nodeProbabilities_.Count; i++)
             {
                 NodeProbability np = nodeProbabilities_[i];
-                LeanTween.scale(np.node_.nodeGraphic_, new Vector3(np.probability_, np.probability_, np.probability_), .1f);
+                LeanTween.scale(np.node_.nodeGraphic_, new Vector3(np.probability_, np.probability_, np.probability_), .5f);
             }
-            yield return new WaitForSeconds(0.15f);
+            yield return new WaitForSeconds(0.5f);
         }
         foreach (Node node in allNodes_)
         {
@@ -157,7 +160,7 @@ public class Pixie : MonoBehaviour {
 
     public IEnumerator QuantumMovement()
     {
-        float probability = 1f;
+        float probability = 0f;
         while (notObserving_)
         {
             // Update list
