@@ -76,7 +76,7 @@ public class Pixie : MonoBehaviour {
             for (int i = 0; i < nodeProbabilities_.Count; i++)
             {
                 NodeProbability np = nodeProbabilities_[i];
-                LeanTween.scale(np.node_.gameObject, new Vector3(np.probability_, np.probability_, np.probability_), .1f);
+                LeanTween.scale(np.node_.nodeGraphic_, new Vector3(np.probability_, np.probability_, np.probability_), .1f);
             }
             yield return new WaitForSeconds(0.15f);
         }
