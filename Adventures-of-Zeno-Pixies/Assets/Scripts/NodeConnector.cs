@@ -27,7 +27,7 @@ public class NodeConnector : MonoBehaviour {
     {
         if (thePixie_.collapsedNode_ == parentNode_ && UI.isObserving_)
         {
-            MouseCursorGlitter.glitterColor_ = Color.blue;
+            MouseCursorGlitter.glitterColor_ = Color.yellow;
             MouseCursorGlitter.glitterSpeed_ = MouseCursorGlitter.glitterSpeed_ * 2;
         };
     }

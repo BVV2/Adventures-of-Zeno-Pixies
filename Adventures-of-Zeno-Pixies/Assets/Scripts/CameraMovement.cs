@@ -24,18 +24,18 @@ public class CameraMovement : MonoBehaviour {
         if (dragControl)
         {
 
-            if (Input.GetMouseButton(1))
+            if (Input.GetMouseButton(0))
             {
                 if (Input.GetAxis("Mouse X") > 0)
                 {
-                    Cam.transform.position += new Vector3(Input.GetAxisRaw("Mouse X") * Time.deltaTime * speed,
-                                               0.0f, Input.GetAxisRaw("Mouse Y") * Time.deltaTime * speed);
+                    Cam.transform.position += new Vector3(Input.GetAxisRaw("Mouse X") * Time.deltaTime * speed, Input.GetAxisRaw("Mouse Y") * Time.deltaTime * speed,
+                                               0.0f);
                 }
 
                 else if (Input.GetAxis("Mouse X") < 0)
                 {
-                    Cam.transform.position += new Vector3(Input.GetAxisRaw("Mouse X") * Time.deltaTime * speed,
-                                               0.0f, Input.GetAxisRaw("Mouse Y") * Time.deltaTime * speed);
+                    Cam.transform.position += new Vector3(Input.GetAxisRaw("Mouse X") * Time.deltaTime * speed, Input.GetAxisRaw("Mouse Y") * Time.deltaTime * speed,
+                                               0.0f);
                 }
             }
         }

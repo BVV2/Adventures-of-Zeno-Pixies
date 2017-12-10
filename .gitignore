@@ -23,6 +23,7 @@ ExportedObj/
 *.svd
 *.pdb
 
+
 # Unity3D generated meta files
 *.pidb.meta
 
@@ -34,6 +35,7 @@ sysinfo.txt
 *.unitypackage
 Adventures-of-Zeno-Pixies/Temp/UnityLockfile
 *.zip
+*.7z
 Adventures-of-Zeno-Pixies/Library/
 Adventures-of-Zeno-Pixies/Temp/
 *.orig

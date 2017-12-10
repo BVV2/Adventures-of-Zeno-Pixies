@@ -28,7 +28,7 @@ public class MouseCursorGlitter : MonoBehaviour {
     }
     public void ButtonHover()
     {
-        glitterColor_ = Color.green;
+        glitterColor_ = Color.yellow;
     }
     public void ResetColor()
     {

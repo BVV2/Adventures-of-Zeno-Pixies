@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87c7fb4a8061d0c4aa01b958ca75b3f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragControl: 0
+  dragControl: 1
 --- !u!124 &124223629158202424
 Behaviour:
   m_ObjectHideFlags: 1
