@@ -54,6 +54,12 @@ public class UI : MonoBehaviour {
     public Image healthReserveImage_;
     public Text healthReserveText_;
 
+    [Header("Audio-related objects")]
+    public AudioSource audiosource_;
+    public AudioClip startObservingSound_;
+    public AudioClip stopObservingSound_;
+
+    [Header("Node graphic array")]
     public NodeTypeGraphic[] nodeGraphics_;
 
     // Change this to be a nice number.
@@ -78,7 +84,7 @@ public class UI : MonoBehaviour {
         Time.timeScale = 1f;
         // Reset healths etc
         manaReserve_ = manaReserveMax_;
-        pixieHealthMax_ = pixieHealthMax_;
+        pixieHealth_ = pixieHealthMax_;
 
         startObserve_.onClick.AddListener(delegate { StartObserving(); });
         stopObserve_.onClick.AddListener(delegate { StopObserving(); });
@@ -221,6 +227,9 @@ public class UI : MonoBehaviour {
         startObserve_.gameObject.SetActive(false);
         stopObserve_.gameObject.SetActive(true);
         thePixie_.Collapse();
+
+        // Sound!
+        audiosource_.PlayOneShot(startObservingSound_);
     }
     public void StopObserving()
     {
@@ -228,6 +237,8 @@ public class UI : MonoBehaviour {
         stopObserve_.gameObject.SetActive(false);
         thePixie_.StopObserving();
         isObserving_ = false;
+        // Sound!
+        audiosource_.PlayOneShot(stopObservingSound_);
     }
 
     public void ShowWin()

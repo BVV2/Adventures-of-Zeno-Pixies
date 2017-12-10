@@ -576,6 +576,7 @@ GameObject:
   - component: {fileID: 114173166805073198}
   - component: {fileID: 114025475343754784}
   - component: {fileID: 114426562747093386}
+  - component: {fileID: 82005191616471286}
   m_Layer: 5
   m_Name: MainUICanvas
   m_TagString: Untagged
@@ -837,6 +838,86 @@ Transform:
   m_Father: {fileID: 224032015319449916}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &82005191616471286
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1675127463278918}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114008427754271648
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -949,7 +1030,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 7330c669e8180524987558227013c764, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ad12f0fcde427464bbd10ac40c811c55, type: 3}
   m_Type: 3
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1606,6 +1687,10 @@ MonoBehaviour:
   manaReserveText_: {fileID: 114877679111774554}
   healthReserveImage_: {fileID: 114022810379660602}
   healthReserveText_: {fileID: 114172536566286700}
+  audiosource_: {fileID: 82005191616471286}
+  startObservingSound_: {fileID: 8300000, guid: 43d774b62c51b3340b249ec973ce02cf,
+    type: 3}
+  stopObservingSound_: {fileID: 8300000, guid: 1b86aab8d0c61114ea949d7a0491b1ec, type: 3}
   nodeGraphics_:
   - name_: NORMAL
     nodeType_: 0
@@ -1776,7 +1861,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: f47068e3bbd1c564ab1c7f392ae7726b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 74bad23a937dc2b44b4c6103b8183cde, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1992,7 +2077,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: f47068e3bbd1c564ab1c7f392ae7726b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 74bad23a937dc2b44b4c6103b8183cde, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
