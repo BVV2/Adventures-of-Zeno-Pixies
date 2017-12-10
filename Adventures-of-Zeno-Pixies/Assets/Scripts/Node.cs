@@ -27,9 +27,13 @@ public class Node : MonoBehaviour {
         if (recursions > 0)
         {
             recursions -= 1;
+            ClearNulls();
             for (int i = 0; i < connectedNodes_.Count; i++)
             {
-                returnList.AddRange(connectedNodes_[i].ReturnAllSubNodes(recursions));
+                List<Node> tempList = connectedNodes_[i].ReturnAllSubNodes(recursions);
+                if (tempList != null) {
+                    returnList.AddRange(tempList);
+                };
             }
         };
         // Remove duplicates (Linq)
