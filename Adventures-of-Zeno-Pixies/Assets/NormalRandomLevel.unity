@@ -122,12 +122,12 @@ Prefab:
     - target: {fileID: 224032015319449916, guid: 715c72749e4c8b140bbad0d72dbe7177,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 457.5
+      value: 324.5
       objectReference: {fileID: 0}
     - target: {fileID: 224032015319449916, guid: 715c72749e4c8b140bbad0d72dbe7177,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 257.5
+      value: 243.5
       objectReference: {fileID: 0}
     - target: {fileID: 224032015319449916, guid: 715c72749e4c8b140bbad0d72dbe7177,
         type: 2}
@@ -564,7 +564,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1950716886952670, guid: 965ba493ea3d92647b43545e0d6733dc, type: 2}
       propertyPath: m_Name
-      value: Main Camera (1)
+      value: Main Camera
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 965ba493ea3d92647b43545e0d6733dc, type: 2}
@@ -585,9 +585,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6563208df373c704f908c3a88b2f3b3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Difficulty: 3
-  Amount: 14
-  Group: 4
+  Difficulty: 2
+  Amount: 7
+  Group: 3
   Rand: {fileID: 2142094910}
 --- !u!114 &2142094910
 MonoBehaviour:
