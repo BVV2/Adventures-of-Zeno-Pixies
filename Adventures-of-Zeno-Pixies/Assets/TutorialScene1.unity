@@ -289,16 +289,6 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224936998883680304, guid: 715c72749e4c8b140bbad0d72dbe7177,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -44.19995
-      objectReference: {fileID: 0}
-    - target: {fileID: 114476529840028034, guid: 715c72749e4c8b140bbad0d72dbe7177,
-        type: 2}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 715c72749e4c8b140bbad0d72dbe7177, type: 2}
   m_IsPrefabParent: 0
@@ -341,6 +331,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114384360311536122, guid: 443a882caa25be64bba5612b2ba7f966,
+        type: 2}
+      propertyPath: connectedNodes_.Array.data[0]
+      value: 
+      objectReference: {fileID: 795081454}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 443a882caa25be64bba5612b2ba7f966, type: 2}
   m_IsPrefabParent: 0
@@ -424,6 +419,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &795081454 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114384360311536122, guid: 443a882caa25be64bba5612b2ba7f966,
+    type: 2}
+  m_PrefabInternal: {fileID: 953853909}
+  m_Script: {fileID: 11500000, guid: 32b50d42534830e44b7d075fe0237fb0, type: 3}
 --- !u!1001 &953853909
 Prefab:
   m_ObjectHideFlags: 0
@@ -483,6 +484,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114760233039479088, guid: 6ca2c6c105c02064f872d47cc0cbafec,
+        type: 2}
+      propertyPath: connectedNodes_.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4848517838125256, guid: 6ca2c6c105c02064f872d47cc0cbafec, type: 2}
       propertyPath: m_LocalPosition.x
       value: 2.24

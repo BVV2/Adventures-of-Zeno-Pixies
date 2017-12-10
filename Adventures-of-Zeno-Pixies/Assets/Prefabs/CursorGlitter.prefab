@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4753276834754150}
   - component: {fileID: 114222656126818658}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CursorGlitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4053540930646054}
   - component: {fileID: 198937297107863202}
   - component: {fileID: 199841392267617434}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CursorGlow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 4864378129360000}
   - component: {fileID: 198660503928100640}
   - component: {fileID: 199493596485277232}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CursorGlitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6819,7 +6819,7 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_Materials:
   - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 3ad6e3afa11bff944a6f8f81b2af1e08, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

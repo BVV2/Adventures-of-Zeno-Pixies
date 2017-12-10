@@ -173,8 +173,8 @@ public class Pixie : MonoBehaviour {
             PopulateNodeList();
             // Pick a connected node
             NodeProbability randomNode = nodeProbabilities_[Random.Range(0, nodeProbabilities_.Count)];
-            // Is it still connected? If not, it's static, and we won't change its probability
-            if (connectedNodes_.Contains(randomNode.node_))
+            // Is it still connected? If not, it's static, and we won't change its probability; also, if there's only one connected node it's static.
+            if (connectedNodes_.Contains(randomNode.node_) && connectedNodes_.Count > 1)
             {
                 // Increase or decrease its probability
                 bool up = (Random.Range(0, 1f) < .5f);
