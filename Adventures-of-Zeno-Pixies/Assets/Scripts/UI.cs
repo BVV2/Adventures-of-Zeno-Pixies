@@ -60,7 +60,7 @@ public class UI : MonoBehaviour {
     static float manaReserveMax_ = 100f;
     static float pixieHealthMax_ = 100f;
 
-    private Pixie thePixie_;
+    public Pixie thePixie_;
     private float oldHealth_;
     private float oldMana_;
 

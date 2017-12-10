@@ -35,7 +35,7 @@ public class Randomizer : MonoBehaviour {
 
     public List<Vector3> GenerateNodePosition (int num, int grouping = 4)
     {
-
+        int killswitch = 0;
         List<Vector3> PositionList = new List<Vector3>();
         for (int i=0; i < num; i++)
         {
@@ -50,7 +50,7 @@ public class Randomizer : MonoBehaviour {
             {
                 if (i != j)
                 {
-                    if (Vector3.Distance(PositionList[i], PositionList[j]) < 3f)
+                    if (Vector3.Distance(PositionList[i], PositionList[j]) < 4f)
                         distMin = true;
                     if (Vector3.Distance(PositionList[i], PositionList[j]) < 10f)
                     {                       
@@ -63,6 +63,12 @@ public class Randomizer : MonoBehaviour {
                 PositionList.RemoveAt(i);
                 PositionList.Add(randomer());
                 i -= 1;
+                killswitch++;
+            }
+            if (killswitch == 50)
+            {
+                Debug.Log("Breaking out from infinite position generating! The job was stopped on " + i.ToString());
+                i = num + 1;             
             }
         }
         
@@ -92,14 +98,28 @@ public class Randomizer : MonoBehaviour {
 
     }
 
-        public void Spawner()
+    public void starter()
     {
-        GameObject Difficulty = GameObject.Find("Difficulty");
         GameObject Amount = GameObject.Find("NodeAmount");
         GameObject Grouping = GameObject.Find("Grouping");
-        Debug.Log("Spawn " + Mathf.RoundToInt(Amount.gameObject.GetComponent<Slider>().value).ToString() + " nodes with " + Mathf.RoundToInt(Grouping.gameObject.GetComponent<Slider>().value).ToString());
-        NodePos = GenerateNodePosition(Mathf.RoundToInt(Amount.gameObject.GetComponent<Slider>().value), Mathf.RoundToInt(Grouping.gameObject.GetComponent<Slider>().value));
+        GameObject Difficulty = GameObject.Find("Difficulty");
+        int amount = Mathf.RoundToInt(Amount.gameObject.GetComponent<Slider>().value);
+        int group = Mathf.RoundToInt(Grouping.gameObject.GetComponent<Slider>().value);
+        int diff = Mathf.RoundToInt(Difficulty.gameObject.GetComponent<Slider>().value);
+        Spawner(amount, group, diff);
+    }
+
+        public void Spawner(int amount, int grouping, int difficulty)
+    {
+        
+        Debug.Log("Spawn " + amount.ToString() + " nodes with " + grouping.ToString());
+        NodePos = GenerateNodePosition(amount, grouping);
         Debug.Log("Node position list generated");
+        Vector3 pos = randomer();
+        GameObject NPixie = GameObject.Instantiate((GameObject)Resources.Load("PixiePrefab"), pos, Quaternion.identity);
+        Debug.Log("Pixie spawned");
+        GameObject UI = GameObject.Find("MainUICanvas");
+        UI.gameObject.GetComponent<UI>().thePixie_ = NPixie.gameObject.GetComponent<Pixie>();
         for (int i = 0; i < NodePos.Count; i++)
         {
             GameObject NewNode = GameObject.Instantiate((GameObject)Resources.Load("NodePrefab"), NodePos[i], Quaternion.identity);
@@ -107,59 +127,70 @@ public class Randomizer : MonoBehaviour {
             NodeList.Add(NewNode.gameObject.GetComponent<Node>());
         }
         Debug.Log("Nodes generated");
-        Vector3 pos = randomer();
-        GameObject NPixie = GameObject.Instantiate((GameObject)Resources.Load("PixiePrefab"), pos, Quaternion.identity);
-        Debug.Log("Pixie spawned");
         int[] SE = StartEnd(NodePos);
         GameObject StartNode = GameObject.Find("Node " + SE[0].ToString());
         GameObject EndNode = GameObject.Find("Node " + SE[1].ToString());
         NPixie.gameObject.GetComponent<Pixie>().collapsedNode_ = StartNode.gameObject.GetComponent<Node>();
         EndNode.gameObject.GetComponent<NodeTrigger>().type_ = NodeTypes.WIN;
-        //Connectorring();
+        //EndNode.gameObject.GetComponent<NodeTrigger>().ChangeGraphic();
+
+        StartCoroutine(Connector(SE[0]));     
     }
 
-    public void Connectorring()
+    public IEnumerator Connector(int StartNode)
     {
-        int[,] connectionMatrix = new int[NodePos.Count, NodePos.Count];
         for (int i = 0; i < NodePos.Count; i++)
         {
-            int connectionLimit = 0;
-            int j = 0;
-            while ((connectionLimit <= 2) || (j < NodePos.Count))
+            if ((Vector3.Distance(NodePos[StartNode], NodePos[i]) < 10f) && (StartNode != i) && NodeList[StartNode].connectedNodes_.Count < 4)
             {
+                NodeList[StartNode].ConnectNode(NodeList[i]);
+                yield return new WaitForSeconds(2f);
 
-                if ((Vector3.Distance(NodePos[i], NodePos[j]) < 10f) && (i != j))
+            }
+        }
+    }
+    
+    private void Specializer(int start, int end, int difficulty)
+    {        
+        for (int i = 0; i < NodeList.Count; i++)
+        {
+            if ((i!=start)&&(i!=end))
+            {
+                
+                
+                if (Random.Range(0, 100f) > 50f) // roll dice for specialization
                 {
-                    if (connectionMatrix[i, j] == 1)
-                    {
-                        connectionLimit++;
-                    }
-                    else
-                    {
-                        if (Random.Range(0, 100f) > 50f)
-                        {
-                            connectionMatrix[i, j] = 1;
-                            connectionMatrix[j, i] = 1;
-                            connectionLimit++;
+                    GameObject SNode = GameObject.Find("Node " + i.ToString());
+                    if (Random.Range(0, 100f) > (50f / (2 / difficulty))) // roll dice for good or bad
+                    {//good
+                        if (Random.Range(0, 100f) > 50f) // roll dice for mana or health
+                        {//mana
+                            SNode.gameObject.GetComponent<NodeTrigger>().type_ = NodeTypes.MANA_UP;
+                            Debug.Log("Node " + i.ToString() + " state is changed to MANA_UP");
+                        }
+                        else
+                        {//health
+                            SNode.gameObject.GetComponent<NodeTrigger>().type_ = NodeTypes.HEALTH_UP;
+                            Debug.Log("Node " + i.ToString() + " state is changed to HEALTH_UP");
                         }
                     }
+                    else
+                    {//bad
+                        if (Random.Range(0, 100f) > 50f) // roll dice for mana or health
+                        {//mana
+                            SNode.gameObject.GetComponent<NodeTrigger>().type_ = NodeTypes.MANA_DOWN;
+                            Debug.Log("Node " + i.ToString() + " state is changed to MANA_DOWN");
+                        }
+                        else
+                        {//health
+                            SNode.gameObject.GetComponent<NodeTrigger>().type_ = NodeTypes.HEALTH_DOWN;
+                            Debug.Log("Node " + i.ToString() + " state is changed to HEALTH_DOWN");
+                        }
+
+                    }
 
                 }
-                j++;
-            }
 
-        }
-        Debug.Log("Connection matrix finished!");
-        for (int i = 0; i < NodePos.Count; i++)
-        {
-            for (int j = 0; j < NodePos.Count; j++)
-            {
-                if (connectionMatrix[i,j]==1)
-                {
-                    NodeList[i].connectedNodes_.Add(NodeList[j]);
-                    NodeList[i].ConnectNode(NodeList[j]);
-                    Debug.Log("Node interconnected");
-                }
             }
         }
     }

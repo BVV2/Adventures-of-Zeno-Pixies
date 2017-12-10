@@ -27,7 +27,7 @@ public class NodeTrigger : MonoBehaviour {
 
     }
 
-    void ChangeGraphic()
+    public void ChangeGraphic()
     {
         // Changes icon to match the trigger type, if any
         SpriteRenderer actualGraphic = ownNode_.nodeGraphic_.GetComponentInChildren<SpriteRenderer>();
