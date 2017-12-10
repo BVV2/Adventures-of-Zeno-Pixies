@@ -46,6 +46,7 @@ public class UI : MonoBehaviour {
     public Button stopObserve_;
     public Text timerText_;
     public Text objectivesLeftText_;
+    public Text failReasonText_;
 
     public Image concentrationImage_;
     public Image manaReserveImage_;
@@ -127,7 +128,10 @@ public class UI : MonoBehaviour {
         };
         if (pixieHealth_ == 0f)
         {
-            ShowFail();
+            ShowFail("(Out of health!)");
+        }
+        if (manaReserve_ == 0f) {
+            ShowFail("(Out of mana!)");
         }
 
         if (oldHealth_ != pixieHealth_)
@@ -166,6 +170,11 @@ public class UI : MonoBehaviour {
             };
         }
 
+    }
+
+    public bool isObserving() {
+
+        return isObserving_;
     }
 
     public Sprite GetNodeTypeSprite(NodeTypes type)
@@ -216,15 +225,17 @@ public class UI : MonoBehaviour {
         winPanel_.SetActive(true);
     }
 
-    public void ShowFail()
+    public void ShowFail(string reasonMessage = "")
     {
         Time.timeScale = 0.1f;
+        failReasonText_.text = reasonMessage;
         losePanel_.SetActive(true);
     }
 
     public void Quit()
     {
         // To menu
+        Time.timeScale = 1f;
         SceneManager.LoadScene("IntroScene");
     }
     public void Restart()

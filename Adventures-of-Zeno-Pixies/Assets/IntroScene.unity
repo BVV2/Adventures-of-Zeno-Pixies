@@ -334,7 +334,7 @@ RectTransform:
   m_GameObject: {fileID: 167436215}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 90}
-  m_LocalScale: {x: 0.009259259, y: 0.009259259, z: 0.009259259}
+  m_LocalScale: {x: 0.018518519, y: 0.018518519, z: 0.018518519}
   m_Children:
   - {fileID: 1488377581}
   - {fileID: 1475943929}
@@ -1585,7 +1585,7 @@ MonoBehaviour:
   indentLevel: 0
   _sceneName:
     stringRef: {fileID: 0}
-    stringVal: dev-petter
+    stringVal: TutorialScene1
   loadingImage: {fileID: 2800000, guid: c465d49a94c8ae34a91a90d5f15f04c0, type: 3}
   sceneNameOLD: 
 --- !u!114 &451550570
@@ -1614,8 +1614,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 600
-    y: -87
+    x: 604
+    y: -129
     width: 120
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
