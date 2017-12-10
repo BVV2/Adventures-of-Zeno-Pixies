@@ -85,6 +85,7 @@ public class UI : MonoBehaviour {
         // Reset healths etc
         manaReserve_ = manaReserveMax_;
         pixieHealth_ = pixieHealthMax_;
+        timer_ = 180f;
 
         startObserve_.onClick.AddListener(delegate { StartObserving(); });
         stopObserve_.onClick.AddListener(delegate { StopObserving(); });
