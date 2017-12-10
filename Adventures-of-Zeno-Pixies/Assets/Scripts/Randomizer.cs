@@ -152,7 +152,8 @@ public class Randomizer : MonoBehaviour {
     }
     
     private void Specializer(int start, int end, int difficulty)
-    {        
+    {
+        
         for (int i = 0; i < NodeList.Count; i++)
         {
             if ((i!=start)&&(i!=end))
@@ -191,7 +192,20 @@ public class Randomizer : MonoBehaviour {
                     }
 
                 }
+                
+            }
+        }
 
+        for (int r = 0; r < difficulty; r++)
+        {
+            int pointer = Mathf.RoundToInt(Random.Range(0, NodeList.Count));
+            if ((pointer != start) && (pointer != end)&& (GameObject.Find("Node " + pointer.ToString()).gameObject.GetComponent<NodeTrigger>().type_!=NodeTypes.OBJECTIVE))
+            {
+                GameObject.Find("Node " + pointer.ToString()).gameObject.GetComponent<NodeTrigger>().type_ = NodeTypes.OBJECTIVE;
+            }
+            else
+            {
+                r--;
             }
         }
     }
