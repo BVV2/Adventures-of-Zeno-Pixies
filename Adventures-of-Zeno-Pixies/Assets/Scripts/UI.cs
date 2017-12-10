@@ -70,6 +70,10 @@ public class UI : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+        /*
+        GameObject Rand = GameObject.Find("Randomizator");
+        timer_ = 180 / (2 / Rand.gameObject.GetComponent<Starter>().Difficulty);
+        */
         // Make sure timescale is ok.
         Time.timeScale = 1f;
         // Reset healths etc

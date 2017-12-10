@@ -159,7 +159,7 @@ Prefab:
     - target: {fileID: 114493050485961140, guid: b0f7c119fdaa7174a8ececc9bbc167a9,
         type: 2}
       propertyPath: Amount
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114493050485961140, guid: b0f7c119fdaa7174a8ececc9bbc167a9,
         type: 2}
