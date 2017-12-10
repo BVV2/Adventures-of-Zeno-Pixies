@@ -73,6 +73,7 @@ public class NodeConnector : MonoBehaviour {
                         if (collidedNode != null && collidedNode != this)
                         {
                             parentNode_.ConnectNode(collidedNode.parentNode_);
+                            break;
                         };
                     }
                 }

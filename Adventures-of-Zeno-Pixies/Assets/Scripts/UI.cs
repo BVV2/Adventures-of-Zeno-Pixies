@@ -72,6 +72,9 @@ public class UI : MonoBehaviour {
 
         // Make sure timescale is ok.
         Time.timeScale = 1f;
+        // Reset healths etc
+        manaReserve_ = manaReserveMax_;
+        pixieHealthMax_ = pixieHealthMax_;
 
         startObserve_.onClick.AddListener(delegate { StartObserving(); });
         stopObserve_.onClick.AddListener(delegate { StopObserving(); });
