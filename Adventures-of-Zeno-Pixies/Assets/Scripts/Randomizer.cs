@@ -133,6 +133,7 @@ public class Randomizer : MonoBehaviour {
         NPixie.gameObject.GetComponent<Pixie>().collapsedNode_ = StartNode.gameObject.GetComponent<Node>();
         EndNode.gameObject.GetComponent<NodeTrigger>().type_ = NodeTypes.WIN;
         //EndNode.gameObject.GetComponent<NodeTrigger>().ChangeGraphic();
+        Specializer(SE[0],SE[1], difficulty);
 
         StartCoroutine(Connector(SE[0]));     
     }
