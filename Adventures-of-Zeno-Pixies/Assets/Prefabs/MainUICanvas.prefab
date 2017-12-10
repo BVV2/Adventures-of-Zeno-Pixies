@@ -1543,25 +1543,25 @@ MonoBehaviour:
   nodeGraphics_:
   - name_: NORMAL
     nodeType_: 0
-    graphic_: {fileID: 21300000, guid: d896645620a44c24cba765ed74b190c8, type: 3}
+    graphic_: {fileID: 21300000, guid: 7c2f64136e5707f439f1bd3302ba64d4, type: 3}
   - name_: WIN
     nodeType_: 1000
     graphic_: {fileID: 21300000, guid: d896645620a44c24cba765ed74b190c8, type: 3}
   - name_: HEALTH_DOWN
     nodeType_: 2000
-    graphic_: {fileID: 21300000, guid: f5c30ed5524ba5842b18a7da58561ecd, type: 3}
+    graphic_: {fileID: 21300000, guid: 56cb6cc71f2e03843b940d068db455f4, type: 3}
   - name_: HEALTH_UP
     nodeType_: 3000
-    graphic_: {fileID: 21300000, guid: 3f4cd347dc2bd0244936347a1a07ccaf, type: 3}
+    graphic_: {fileID: 21300000, guid: 10b6904f6b59c6f4b97765f70d81af46, type: 3}
   - name_: MANA_DOWN
     nodeType_: 4000
-    graphic_: {fileID: 21300000, guid: 13de0a2857582784fb7525eb0297ab21, type: 3}
+    graphic_: {fileID: 21300000, guid: 56cb6cc71f2e03843b940d068db455f4, type: 3}
   - name_: MANA_UP
     nodeType_: 5000
-    graphic_: {fileID: 21300000, guid: acbb5ead25debff4d807a33d651e98e1, type: 3}
+    graphic_: {fileID: 21300000, guid: d1f8ea7025bc68040a277fcad3bc2e1b, type: 3}
   - name_: OBJECTIVE
     nodeType_: 6000
-    graphic_: {fileID: 21300000, guid: acda95b0db2fb1c4d9b9051cfd7704bb, type: 3}
+    graphic_: {fileID: 21300000, guid: ade18bc2cde305f499a03f825919b634, type: 3}
 --- !u!114 &114436941492507030
 MonoBehaviour:
   m_ObjectHideFlags: 1
