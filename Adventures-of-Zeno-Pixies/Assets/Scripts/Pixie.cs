@@ -26,7 +26,7 @@ public class Pixie : MonoBehaviour {
     protected bool notObserving_ = true;
     private Animator animator_;
 
-    // used to reset when obseving.
+    // used to reset when observing.
     protected Node[] allNodes_;
 
     // Init
