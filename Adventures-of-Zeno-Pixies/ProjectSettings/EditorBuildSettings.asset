@@ -14,3 +14,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/TutorialScene1.unity
     guid: afe4054fa68bed84793177fde0b020da
+  - enabled: 1
+    path: Assets/EasyLevel.unity
+    guid: a447674fabbc5a34c8e433c12077f8be
+  - enabled: 1
+    path: Assets/NormalLevel.unity
+    guid: 55818ba7757756a48af51a99dbd20636
+  - enabled: 1
+    path: Assets/DifficultLevel.unity
+    guid: 2f6ba1a2c384de046b1813b0a55d36c7

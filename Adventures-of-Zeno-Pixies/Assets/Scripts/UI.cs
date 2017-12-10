@@ -238,6 +238,10 @@ public class UI : MonoBehaviour {
         Time.timeScale = 1f;
         SceneManager.LoadScene("IntroScene");
     }
+    public void QuitApp() {
+        Application.Quit();
+    }
+
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

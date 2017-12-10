@@ -122,12 +122,12 @@ Prefab:
     - target: {fileID: 224032015319449916, guid: 715c72749e4c8b140bbad0d72dbe7177,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 324.5
+      value: 457.5
       objectReference: {fileID: 0}
     - target: {fileID: 224032015319449916, guid: 715c72749e4c8b140bbad0d72dbe7177,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 243.5
+      value: 257.5
       objectReference: {fileID: 0}
     - target: {fileID: 224032015319449916, guid: 715c72749e4c8b140bbad0d72dbe7177,
         type: 2}
@@ -596,10 +596,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1900230700}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4c7ca60727a1334da1f445401612995, type: 3}
+  m_Script: {fileID: 11500000, guid: 6563208df373c704f908c3a88b2f3b3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Difficulty: 1
-  Amount: 6
+  Amount: 5
   Group: 2
   Rand: {fileID: 1900230701}
