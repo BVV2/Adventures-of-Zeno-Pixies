@@ -10,7 +10,7 @@ public class Randomizer : MonoBehaviour {
 
     public List<Vector3> NodePos;
     public List<Node> NodeList;
-    public Camera MCamera;
+   // public Camera MCamera;
     // Use this for initialization
     void Start () {
 
@@ -27,8 +27,8 @@ public class Randomizer : MonoBehaviour {
     private Vector3 randomer()
     {
         Vector3 vec = new Vector3();
-        vec.x = Random.Range(-10f, 10f);
-        vec.y = Random.Range(-8f, 8f);
+        vec.x = Random.Range(-15f, 15f);
+        vec.y = Random.Range(-15f, 15f);
         vec.z = 0f;
         return vec;
     }
@@ -65,7 +65,7 @@ public class Randomizer : MonoBehaviour {
                 i -= 1;
                 killswitch++;
             }
-            if (killswitch == 50)
+            if (killswitch == 90)
             {
                 Debug.Log("Breaking out from infinite position generating! The job was stopped on " + i.ToString());
                 i = num + 1;             

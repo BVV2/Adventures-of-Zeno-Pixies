@@ -10,7 +10,7 @@ public class CameraMovement : MonoBehaviour {
     int width;
     int height;
 
-    public bool dragControl = true;
+    public bool dragControl = false;
     GameObject Cam;
 
     void Start () {
