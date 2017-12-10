@@ -179,6 +179,10 @@ public class UI : MonoBehaviour {
 
         return isObserving_;
     }
+    public int objectivesLeft() {
+
+        return objectives_;
+    }
 
     public Sprite GetNodeTypeSprite(NodeTypes type)
     {

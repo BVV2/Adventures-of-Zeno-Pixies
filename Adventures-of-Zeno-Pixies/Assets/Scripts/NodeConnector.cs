@@ -57,7 +57,7 @@ public class NodeConnector : MonoBehaviour {
         {
             if (thePixie_.collapsedNode_ == parentNode_)
             {
-                isMouseDown_ = false;
+                
                 // Check if there are any nodes nearby
                 RaycastHit2D hit;
                 //Ray ray = Camera.main.ScreenPointToRay(mouseRenderer_.GetPosition(1));
@@ -80,14 +80,13 @@ public class NodeConnector : MonoBehaviour {
                 else {
                     Debug.Log("no hit!");
                 }
-                // Remove line
-                mouseRenderer_.positionCount = 0;
+                
+                
             };
         };
-            
-                
-
-
+        // Remove line
+        mouseRenderer_.positionCount = 0;
+        isMouseDown_ = false;
     }
 	
 	// Update is called once per frame
