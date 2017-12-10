@@ -736,18 +736,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 85.43683, y: -178.6345}
+  scrollPos: {x: 325.62262, y: -198.72278}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
-  zoom: 1
+  zoom: 0.85000014
   scrollViewRect:
     serializedVersion: 2
     x: -343
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
+  selectedBlocks:
+  - {fileID: 957809631}
   selectedCommands: []
   variables:
   - {fileID: 957809579}
@@ -779,8 +780,8 @@ MonoBehaviour:
   indentLevel: 0
   storyText: Would you be a good sport and help us out?
   description: 
-  character: {fileID: 0}
-  portrait: {fileID: 0}
+  character: {fileID: 1004353560}
+  portrait: {fileID: 21300006, guid: b35ad3774861c9f40adc9c7f27f980ee, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -806,8 +807,8 @@ MonoBehaviour:
   storyText: Our Pixie is...probably...lost! We must connect him to the final Ley
     Line, to complete the network!
   description: 
-  character: {fileID: 0}
-  portrait: {fileID: 0}
+  character: {fileID: 1004353560}
+  portrait: {fileID: 21300004, guid: b35ad3774861c9f40adc9c7f27f980ee, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -849,8 +850,8 @@ MonoBehaviour:
   indentLevel: 0
   storyText: We've got a snag in our operation!
   description: 
-  character: {fileID: 0}
-  portrait: {fileID: 0}
+  character: {fileID: 1004353560}
+  portrait: {fileID: 21300004, guid: b35ad3774861c9f40adc9c7f27f980ee, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -875,8 +876,8 @@ MonoBehaviour:
   indentLevel: 0
   storyText: Thank goodness you're here!
   description: 
-  character: {fileID: 0}
-  portrait: {fileID: 0}
+  character: {fileID: 1004353560}
+  portrait: {fileID: 21300000, guid: b35ad3774861c9f40adc9c7f27f980ee, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -974,7 +975,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 562.2955
     y: 220.44188
-    width: 162
+    width: 166.47057
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1264,7 +1265,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 777.7782
     y: 73.18899
-    width: 192
+    width: 201.76468
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1339,7 +1340,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 776.779
     y: 221.44159
-    width: 128
+    width: 129.99998
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1650,8 +1651,8 @@ MonoBehaviour:
   indentLevel: 1
   storyText: Quick! Drag a line to the final Ley Node from his node!
   description: 
-  character: {fileID: 0}
-  portrait: {fileID: 0}
+  character: {fileID: 1004353560}
+  portrait: {fileID: 21300000, guid: b35ad3774861c9f40adc9c7f27f980ee, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -1717,7 +1718,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 428.32748
     y: 138.02405
-    width: 120
+    width: 121.764694
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1785,8 +1786,8 @@ MonoBehaviour:
   indentLevel: 1
   storyText: Aha! There the little pixie is!
   description: 
-  character: {fileID: 0}
-  portrait: {fileID: 0}
+  character: {fileID: 1004353560}
+  portrait: {fileID: 21300006, guid: b35ad3774861c9f40adc9c7f27f980ee, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -1854,7 +1855,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 582.976
     y: 328.93613
-    width: 123
+    width: 126.47057
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1884,8 +1885,8 @@ MonoBehaviour:
   storyText: Start observing at the exact moment you think he is where he's supposed
     to be!
   description: 
-  character: {fileID: 0}
-  portrait: {fileID: 0}
+  character: {fileID: 1004353560}
+  portrait: {fileID: 21300000, guid: b35ad3774861c9f40adc9c7f27f980ee, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -1910,8 +1911,8 @@ MonoBehaviour:
   indentLevel: 0
   storyText: '...or not. Look at the size of the nodes for a clue!'
   description: 
-  character: {fileID: 0}
-  portrait: {fileID: 0}
+  character: {fileID: 1004353560}
+  portrait: {fileID: 21300006, guid: b35ad3774861c9f40adc9c7f27f980ee, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -1937,8 +1938,8 @@ MonoBehaviour:
   storyText: Great! Now he just needs to find the connection. And you need to see
     him do it.
   description: 
-  character: {fileID: 0}
-  portrait: {fileID: 0}
+  character: {fileID: 1004353560}
+  portrait: {fileID: 21300000, guid: b35ad3774861c9f40adc9c7f27f980ee, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -2165,7 +2166,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 375.5799
     y: 317.04605
-    width: 145
+    width: 151.17645
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2194,8 +2195,8 @@ MonoBehaviour:
   storyText: Start by finding out where he is. Yes - I know it drains your Mana. Don't
     be such a crybaby!
   description: 
-  character: {fileID: 0}
-  portrait: {fileID: 0}
+  character: {fileID: 1004353560}
+  portrait: {fileID: 21300006, guid: b35ad3774861c9f40adc9c7f27f980ee, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -2273,8 +2274,8 @@ MonoBehaviour:
   indentLevel: 0
   storyText: All you have to do is press the connecting line with your magic wand!
   description: 
-  character: {fileID: 0}
-  portrait: {fileID: 0}
+  character: {fileID: 1004353560}
+  portrait: {fileID: 21300006, guid: b35ad3774861c9f40adc9c7f27f980ee, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -2299,8 +2300,8 @@ MonoBehaviour:
   indentLevel: 0
   storyText: Oh! Cut off any unnecessary nodes to increase your chances.
   description: 
-  character: {fileID: 0}
-  portrait: {fileID: 0}
+  character: {fileID: 1004353560}
+  portrait: {fileID: 21300000, guid: b35ad3774861c9f40adc9c7f27f980ee, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -2310,6 +2311,54 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 602636013}
+--- !u!1001 &1004353559
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4069619492540700, guid: 7ec5fed39dae82e4ba269756a3b65346, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4069619492540700, guid: 7ec5fed39dae82e4ba269756a3b65346, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4069619492540700, guid: 7ec5fed39dae82e4ba269756a3b65346, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4069619492540700, guid: 7ec5fed39dae82e4ba269756a3b65346, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4069619492540700, guid: 7ec5fed39dae82e4ba269756a3b65346, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4069619492540700, guid: 7ec5fed39dae82e4ba269756a3b65346, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4069619492540700, guid: 7ec5fed39dae82e4ba269756a3b65346, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4069619492540700, guid: 7ec5fed39dae82e4ba269756a3b65346, type: 2}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7ec5fed39dae82e4ba269756a3b65346, type: 2}
+  m_IsPrefabParent: 0
+--- !u!114 &1004353560 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114329777486974400, guid: 7ec5fed39dae82e4ba269756a3b65346,
+    type: 2}
+  m_PrefabInternal: {fileID: 1004353559}
+  m_Script: {fileID: 11500000, guid: 25fb867d2049d41f597aefdd6b19f598, type: 3}
 --- !u!114 &1502036994 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114384360311536122, guid: 443a882caa25be64bba5612b2ba7f966,
