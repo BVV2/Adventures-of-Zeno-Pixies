@@ -54,16 +54,16 @@ public class CameraMovement : MonoBehaviour {
                                            0.0f, 0.0f);
             }
 
-            if (Input.mousePosition.z > height - boundary)
+            if (Input.mousePosition.y > height - boundary)
             {
-                Cam.transform.position += new Vector3(0.0f, 0.0f,
-                                            Time.deltaTime * speed);
+                Cam.transform.position += new Vector3(0.0f,
+                                            Time.deltaTime * speed, 0.0f);
             }
 
-            if (Input.mousePosition.z < 0 + boundary)
+            if (Input.mousePosition.y < 0 + boundary)
             {
-                Cam.transform.position -= new Vector3(0.0f, 0.0f,
-                                            Time.deltaTime * speed);
+                Cam.transform.position -= new Vector3(0.0f,
+                                            Time.deltaTime * speed, 0.0f);
             }
         }
     }

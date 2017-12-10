@@ -60,6 +60,7 @@ public class Node : MonoBehaviour {
         };
         int i = 0;
         lineRenderer_normal.positionCount = connectedNodes_.Count * 2;
+        ClearNulls();
         foreach (Node node in connectedNodes_)
         {
             //node.ConnectNode(this);
