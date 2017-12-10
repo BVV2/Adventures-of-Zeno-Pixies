@@ -18,6 +18,19 @@ public class MouseCursorGlitter : MonoBehaviour {
         glitterSpeed_ = ps_glitter_.startSpeed;
         defaultSpeed_ = glitterSpeed_;
 	}
+
+    public void ChangeGlitterColor(Color color)
+    {
+        glitterColor_ = color;
+    }
+    public void ButtonHover()
+    {
+        glitterColor_ = Color.green;
+    }
+    public void ResetColor()
+    {
+        glitterColor_ = defaultColor_;
+    }
 	
 	// Update is called once per frame
 	void Update () {
