@@ -117,8 +117,9 @@ public class Randomizer : MonoBehaviour {
         Vector3 pos = randomer();
         GameObject NPixie = GameObject.Instantiate((GameObject)Resources.Load("PixiePrefab"), pos, Quaternion.identity);
         Debug.Log("Pixie spawned");
-        GameObject UI = GameObject.Find("MainUICanvas");
-        UI.gameObject.GetComponent<UI>().thePixie_ = NPixie.gameObject.GetComponent<Pixie>(); //make IU see the pixie
+        GameObject GUI = GameObject.Find("MainUICanvas");
+        GUI.gameObject.GetComponent<UI>().thePixie_ = NPixie.gameObject.GetComponent<Pixie>(); //make IU see the pixie
+        
         for (int i = 0; i < NodePos.Count; i++) //instantiation loop
         {
             GameObject NewNode = GameObject.Instantiate((GameObject)Resources.Load("NodePrefab"), NodePos[i], Quaternion.identity);
@@ -126,6 +127,7 @@ public class Randomizer : MonoBehaviour {
             NodeList.Add(NewNode.gameObject.GetComponent<Node>());
         }
         Debug.Log("Nodes generated");
+
         int[] SE = StartEnd(NodePos); //finding and assigning start and end nodes
         GameObject StartNode = GameObject.Find("Node " + SE[0].ToString());
         GameObject EndNode = GameObject.Find("Node " + SE[1].ToString());

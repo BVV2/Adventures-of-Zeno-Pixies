@@ -9,26 +9,29 @@ EditorBuildSettings:
     path: Assets/IntroScene.unity
     guid: ab1306e6b43d3fe418bb224a1cfab8f4
   - enabled: 1
-    path: Assets/dev-petter.unity
-    guid: be6b3cdf57ba54b49aaccabeb2bb0e53
-  - enabled: 1
     path: Assets/TutorialScene1.unity
     guid: afe4054fa68bed84793177fde0b020da
   - enabled: 1
-    path: Assets/EasyCraftedLevel.unity
-    guid: 1cc6323c4cff5b64899277b580b5775d
+    path: Assets/TutorialScene2.unity
+    guid: 2366cd4d0d6b86144bd347ce1a61194c
   - enabled: 1
-    path: Assets/NormalCraftedLevel.unity
-    guid: 55818ba7757756a48af51a99dbd20636
+    path: Assets/TutorialScene3.unity
+    guid: c8703552949203c42a6eb33d4d2be3ae
+  - enabled: 1
+    path: Assets/EasyCraftedLevel.unity
+    guid: a91961d27aa3b5948a1201c82217d083
   - enabled: 1
     path: Assets/EasyRandomLevel.unity
-    guid: a447674fabbc5a34c8e433c12077f8be
+    guid: 3b998fed3bd912f419d1ba76d731cf98
+  - enabled: 1
+    path: Assets/NormalCraftedLevel.unity
+    guid: 448be7b643850a246af7164cc23a2329
   - enabled: 1
     path: Assets/NormalRandomLevel.unity
-    guid: 6b9831fb68373af448efdb20bc9b5db8
-  - enabled: 1
-    path: Assets/DifficultRandomLevel.unity
-    guid: 2f6ba1a2c384de046b1813b0a55d36c7
+    guid: e405df23d56236042b569d01b74724f5
   - enabled: 1
     path: Assets/DifficultCraftedLevel.unity
-    guid: 3b64c574ae171ff47a0354f35160fa7c
+    guid: bc7dda9c701787a428d1bcade9cdbbca
+  - enabled: 1
+    path: Assets/DifficultRandomLevel.unity
+    guid: 32da426bfa5e40e4d8c6e843b924a9a7
