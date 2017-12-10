@@ -21,7 +21,7 @@ public class Pixie : MonoBehaviour {
     public List<Node> connectedNodes_ = new List<Node> { };
     public List<NodeProbability> nodeProbabilities_ = new List<NodeProbability> { };
     // How many levels deep will it find connected nodes?
-    private int recursions_ = 3;
+    private int recursions_ = 10;
     // Set to false when you want the randomness to stop
     protected bool notObserving_ = true;
     private Animator animator_;

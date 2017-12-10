@@ -224,7 +224,8 @@ public class UI : MonoBehaviour {
 
     public void Quit()
     {
-        Application.Quit();
+        // To menu
+        SceneManager.LoadScene("IntroScene");
     }
     public void Restart()
     {
