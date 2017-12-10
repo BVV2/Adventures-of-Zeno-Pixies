@@ -16,7 +16,7 @@ public class Randomizer : MonoBehaviour {
 
         NodePos = new List<Vector3>();
         NodeList = new List<Node>();
-        MCamera = GameObject.Find("Main Camera").gameObject.GetComponent<Camera>();
+        //MCamera = GameObject.Find("Main Camera").gameObject.GetComponent<Camera>();
     }
 	
 	// Update is called once per frame
