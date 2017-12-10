@@ -4,6 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+[System.Serializable]
+public class TriggerAudio {
+    public string name_;
+    public NodeTypes type_;
+    public AudioClip triggerSound_;
+}
+
 public class NodeTrigger : MonoBehaviour {
 
     // What happens when the pixie is in this node
@@ -17,6 +24,10 @@ public class NodeTrigger : MonoBehaviour {
     [Header("Add possible trigger effects here, e.g. win, death, etc")]
     public NodeTypes type_ = NodeTypes.NORMAL;
 
+    public AudioSource audiosource_;
+    public TriggerAudio[] triggerAudio_;
+
+
     private bool pixieIsInNode_ = false;
 
     void Start()
@@ -24,6 +35,17 @@ public class NodeTrigger : MonoBehaviour {
         thePixie_ = FindObjectOfType<Pixie>();
         ui_ = FindObjectOfType<UI>();
         ChangeGraphic();
+
+    }
+
+    public AudioClip GetSound(NodeTypes type) {
+
+        foreach (TriggerAudio audio in triggerAudio_) {
+            if (audio.type_ == type) {
+                return audio.triggerSound_;
+            }
+        }
+        return null;
 
     }
 
@@ -69,6 +91,7 @@ public class NodeTrigger : MonoBehaviour {
                     if (UI.objectives_ == 0)
                     {
                         ui_.ShowWin();
+                        
                     };
                     break;
                 };
@@ -104,6 +127,7 @@ public class NodeTrigger : MonoBehaviour {
                     break;
                 };
         }
+        audiosource_.PlayOneShot(GetSound(type_));
 
                 yield return new WaitForEndOfFrame();
     }
