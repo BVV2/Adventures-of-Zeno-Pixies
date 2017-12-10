@@ -159,7 +159,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &82749018167432684
 AudioSource:
   m_ObjectHideFlags: 1
@@ -257,7 +257,7 @@ MonoBehaviour:
   nameText: {fileID: 114307687038426052}
   storyText: {fileID: 114391271501442198}
   characterImage: {fileID: 114130926781508684}
-  fitTextWithImage: 1
+  fitTextWithImage: 0
   closeOtherDialogs: 0
 --- !u!114 &114058842226248682
 MonoBehaviour:
